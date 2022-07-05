@@ -1,0 +1,52 @@
+CREATE SECTION 
+	
+#create database 
+use shopDB	
+
+#insert data in shopDB IN MONGO DB.
+db.products.insertOne({_id: 1, name: "Pen", price: 1.20})
+
+#to know the table sequence
+show collections
+
+
+#to insert something .
+
+db.products.insertOne({_id: 2, name: "Pencil", price: 0.80})
+
+
+READ SECTION
+
+#to show data base table
+db.products.find()
+
+#to bring specific data.
+db.products.find({name: "pencil"})
+
+#SEARCH THE PRODUCT WHOSE PRICE IS GRETER THAN 1
+db.products.find({price: {$gt: 1}})
+
+
+
+#TO FIND SPECIFIC STUFF FROM SPECIFIC LIST
+ db.products.find({_id: 1}, {name: 1})
+
+#TO FIND SPECFIC STUFF FROM SPECIFIC LIST WITHOUT ID SHOW UP
+db.products.find({_id: 1}, {name: 1, _id: 0})
+
+
+UPDATE SECTION 
+TO INSERT NEW COLUMN 
+db.products.updateOne({_id: 1}, {$set: {stock: 32}})
+
+DELETE SECTION
+TO DELETE COLUMN
+db.products.deleteOne({_id: 2})
+
+
+
+#INSERT NEW COLUMN WITH FULL DETAILS
+db.products.insert({_id: 3, name: "Rubber", price: 1.30, stock: 43, reviews:[{authorName: "Sally", rating: 5, review: "Best Rubber ever"},{authorName: "john",rating: 5, review: "Awesome rubber" }]})
+
+#CAN ALSO USE THIS CODE
+db.products.insertOne({_id: 2, name: "Pencil", price: 1.30, stock: 43, reviews:[{authorName: "Anjel", rating: 5, review: "Best Rubber ever"},{authorName: "Goldi",rating: 5, review: "Awesome rubber" }]})

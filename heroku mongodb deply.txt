@@ -1,0 +1,53 @@
+#heroku mongoo website guide..
+mogodb claud
+#click connect with mongoDbsell
+copy the  link  you will get there or can use below one 
+mongosh "mongodb+srv://cluster0.ibott.mongodb.net/myFirstDatabase" --username admin-goldi
+
+remove sh from mongo and past it in turminal and enter your password which was in admin cluster
+
+#click connect with your application option in connect
+copy the link from there
+replace this link 
+with mongodb://localhost:27017
+ mongodb+srv://admin-goldi:<password>@cluster0.ibott.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
+would be like  this after pasting
+
+mongoose.connect("mongodb+srv://admin-goldi:<password>@cluster0.ibott.mongodb.net/myFirstDatabase?retryWrites=true&w=majority/todolistDB")
+
+#put password in password box in mongo connect AND DELETE whatever after mongodb.net except you project name
+
+mongoose.connect("mongodb+srv://admin-goldi:<PASSWORD>@cluster0.ibott.mongodb.net/todolistDB")
+
+
+
+
+
+
+#create a .gitignore file  and paste it.
+/node_modules
+npm-debug.log
+.DS_Store
+/*.env
+
+
+
+# REPLACE THIS CODE WITH APP.LISTEN(3000, FUNCTION)..
+
+let port = process.env.PORT;
+if (port == null || port == "" ){
+  port = 3000;
+}
+
+app.listen(port, function(req, res){
+  console.log("server has started Succeessfully");
+
+});
+
+
+#create a script file below license in package jason
+  "engines": {
+    "node": "16.13.0"
+  },
+

@@ -1,0 +1,120 @@
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/supervillains")
+
+const list = new mongoose.Schema ({
+  name: String,
+  age: Number,
+  power: String
+});
+
+const Villains = mongoose.model("Villains",list);
+
+const nameofVillains = new Villains  ({
+  name: "thanos",
+  age: 100,
+  power: "short of god"
+})
+
+// nameofVillains.save();
+
+
+const villainsSchema = new mongoose.Schema ({
+  name: String,
+  age: Number
+});
+
+const Person = mongoose.model("Person", villainsSchema);
+
+const personName = new Person({
+  name: "Dormamu",
+  age: 33232
+});
+personName.save()
+
+
+const wilson = new Villains({
+  name: "Wilson Fisk",
+  age: 90,
+  power: "Money and gangs"
+});
+
+const joker = new Villains({
+  name: "Joker",
+  age: 58,
+  power: "mentally sick"
+});
+
+const mistereo = new Villains({
+  name: "Mistereo",
+  age: 88,
+  power: "creating illusions"
+});
+
+// Villains.insertMany([wilson, joker, mistereo], function(err){
+//   if (err){
+//     console.log(err);
+//   }else{
+//     console.log("Successfully saved all  the crazyVillains to Villains list ")
+//   }
+// });
+
+Villains.find(function(err, enemy){
+  if (err){
+    console.log(err);
+  }else {
+      console.log(enemy);
+
+      enemy.forEach(function(oneEnemy){
+        console.log(oneEnemy.name);
+      });
+    }
+
+
+});
+
+
+
+############
+
+SIMPLE FORMATE
+
+
+const mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/HavingFun");
+const universes = new mongoose.Schema({
+  name: String,
+  distance: Number
+});
+
+const Universe = mongoose.model("Universe", universes);
+const universe1 = new Universe({
+  name: "Mars",
+  distance: 30000
+});
+
+const universe2 = new Universe({
+  name: "Jupiter",
+  distance: 50000
+})
+
+
+Universe.insertMany([universe1, universe2], function(err){
+  if (err){
+    console.log(err)
+  }else {
+    console.log("Successfully Inserted in Universe")
+  }
+});
+Universe.find(function(err, element){
+  if (err){
+    console.log(err)
+  }else {
+    console.log(element)
+    element.forEach(function(data){
+      console.log(data.name)
+    })
+
+  }
+})
+

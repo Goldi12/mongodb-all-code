@@ -1,0 +1,15 @@
+C:\Program Files\MongoDB\Server\5.0\data\
+
+
+alias mongod="/c/Program\ Files/MongoDB/Server/5.0/bin/mongod.exe"
+alias mongo="/c/Program\ Files/MongoDB/Server/5.0/bin/mongo.exe"
+
+
+
+#MONGODB 
+#TO KNOW THE DATABASE
+db
+
+#to create new database
+use shopDB
+

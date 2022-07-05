@@ -1,0 +1,120 @@
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/supervillains")
+
+const Villainlist = new mongoose.Schema ({
+  name: String,
+  age: Number,
+  power: String
+});
+
+const Villains = mongoose.model("Villains",Villainlist);
+
+
+const nameofVillains = new Villains  ({
+  name: "thanos",
+  age: 100,
+  power: "short of god"
+
+})
+
+nameofVillains.save();
+
+
+const villainsSchema = new mongoose.Schema ({
+  name: String,
+  age: Number,
+  favoriteVillain: Villainlist
+});
+
+const Person = mongoose.model("Person", villainsSchema);
+
+const reverseflash = new Villains({
+  name: "ReverseFlash",
+  score: 12343,
+  power: "Fastest speeder can beat flash "
+});
+
+reverseflash.save();
+
+const personName = new Person({
+  name: "amy",
+  age: 33232,
+  favoriteVillain: reverseflash
+});
+personName.save()
+
+
+const wilson = new Villains({
+  name: "Wilson Fisk",
+  age: 90,
+  power: "Money and gangs"
+});
+
+const joker = new Villains({
+  name: "Joker",
+  age: 58,
+  power: "mentally sick"
+});
+
+const mistereo = new Villains({
+  name: "Mistereo",
+  age: 88,
+  power: "creating illusions"
+});
+
+// Villains.insertMany([wilson, joker, mistereo], function(err){
+//   if (err){
+//     console.log(err);
+//   }else{
+//     console.log("Successfully saved all  the crazyVillains to Villains list ")
+//   }
+// });
+
+// TO SHOWING DOCUMENTS
+Villains.find(function(err, enemy){
+  if (err){
+    console.log(err);
+  }else {
+
+    console.log(enemy);
+// TO SHOWING SPECIFIC DOCUMENTS
+
+      enemy.forEach(function(oneEnemy){
+        console.log(oneEnemy.name);
+      });
+    }
+
+
+});
+// TO UPDATE THE DOCUMENTS.
+
+// Villains.updateOne({id: "61d25faad268017abadac967"}, {name: "BabyThanos", age: 200, power: "Cute but crzy villains"}, function(err){
+//   if (err){
+//     console.log(err);
+//
+//   }else {
+//     console.log("Successfully updated the document.")
+//   }
+// });
+
+
+
+// TO DELETE SPECIFIC DOCUMENTS
+// Villains.deleteOne({name: "BabyThanos"}, function(err){
+//   if (err){
+//     console.log(err)
+//   }else{
+//     console.log("Successfully deleted the document");
+//   }
+// })
+
+// TO DELETE MENU DOCUMENTS
+// Person is the name of the module
+Person.deleteMany({name: "Dormamu"}, function(err){
+  if (err){
+    console.log(err)
+  }else {
+    console.log("Successfully deleted the all documents");
+  }
+});

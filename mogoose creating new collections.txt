@@ -1,0 +1,70 @@
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/supervillains")
+
+const list = new mongoose.Schema ({
+  name: String,
+  age: Number,
+  power: String
+});
+
+const Villains = mongoose.model("Villains",list);
+
+const nameofVillains = new Villains  ({
+  name: "thanos",
+  age: 100,
+  power: "short of god"
+})
+
+nameofVillains.save();
+
+
+const villainsSchema = new mongoose.Schema ({
+  name: String,
+  age: Number
+});
+
+const Person = mongoose.model("Person", villainsSchema);
+
+const personName = new Person({
+  name: "Dormamu",
+  age: 33232
+});
+personName.save()
+
+
+
+
+########
+SIMPLE AND EASY WAY
+
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/Romentic")
+
+const items = new mongoose.Schema ({
+  name: String,
+
+});
+
+const Item = mongoose.model("Item", items);
+
+const item1 = new Item ({
+  name: "Wonderfull day i love it !",
+
+})
+
+item1.save();
+
+
+const people = new mongoose.Schema ({
+  name: String,
+  age: Number
+});
+
+const Person = mongoose.model("Person", people);
+
+const person1 = new Person({
+  name: "Every think is good here"
+});
+person1.save()

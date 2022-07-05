@@ -1,0 +1,24 @@
+npm init
+npm install mongoose
+npm install mongodb
+
+
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb://localhost:27017/supervillains")
+
+const list = new mongoose.Schema ({
+  name: String,
+  age: Number,
+  power: String
+});
+
+const Villains = mongoose.model("Villains",list);
+
+const nameofVillains = new Villains  ({
+  name: "thanos",
+  age: 100,
+  power: "short of god"
+})
+
+nameofVillains.save();
